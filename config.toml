@@ -1,7 +1,7 @@
 baseURL = "https://sahil.fyi/"
 title   = "Sahil Aggarwal"
 languageCode = "en-us"
-theme = "hello-friend-ng"
+theme = "hello-friend-ng-fork"
 
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
