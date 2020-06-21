@@ -10,9 +10,9 @@ tags:
 
 Profiling can be very helpful while debugging or throttling application to bring down the latencies and optimize the application at system level. There are many profiling tools such as dtrace, systemtap, ktap, ftrace, perf etc from which only few are safe to use on production machines(ftrace, perf).
 
-If you as a developer or system engineer want to dig out source of latencies or unexpected behaviour by application, you may wish to write something on top of ftrace or perf to quickly run it. While [Brendan Gregg](http://www.brendangregg.com) has written very useful [scipts](https://github.com/brendangregg/perf-tools) on top of ftrace, this article will focus on more efficent way of writing such application by using `perf_event_open()` system call instead of using ftrace
+If we want to dig out source of latencies or unexpected behaviour by application, we may wish to write something on top of ftrace or perf to quickly run it. While [Brendan Gregg](http://www.brendangregg.com) has written very useful [scipts](https://github.com/brendangregg/perf-tools) on top of ftrace, this article will focus on more efficent way of writing such application by using `perf_event_open()` system call instead of using ftrace.
 
-[`perf_event_open()`](http://man7.org/linux/man-pages/man2/perf_event_open.2.html) is a system call which can be used to enable profiling on tracepoints available through ftrace, same being used by perf tool.It return file descriptor which corresponds to the event being traced. If sampling is enabled it makes that stream ring buffer which can be mmap'ed otherwise it just stores the counter of the event. Since it return binary of struct format of event, string parsing is not required unlike in ftrace. For eg:
+[`perf_event_open()`](http://man7.org/linux/man-pages/man2/perf_event_open.2.html) is a system call which can be used to enable profiling on tracepoints available through ftrace, same being used by perf tool. It return file descriptor which corresponds to the event being traced. If sampling is enabled it makes that stream ring buffer which can be mmap'ed otherwise it just stores the counter of the event. Since it return binary of struct format of event, string parsing is not required unlike in ftrace. For eg:
 
 ```
 $ cat /sys/kernel/debug/tracing/events/sched/sched_switch/format
