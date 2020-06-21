@@ -1,6 +1,6 @@
 ---
 title: "Adding Tracepoints in Ftrace"
-date: 2018-03-05T14:06:28Z
+date: 2015-09-06T14:06:28Z
 draft: true
 toc: false
 images:

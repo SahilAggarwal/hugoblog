@@ -117,7 +117,7 @@ disableHugoGeneratorInject = false
 
 [languages]
   [languages.en]
-    subtitle  = "Sahil Aggarwal"
+    subtitle  = ""
     weight    = 1
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
@@ -125,3 +125,9 @@ disableHugoGeneratorInject = false
     identifier = "blog"
     name       = "Blog"
     url        = "/posts"
+  [[menu.main]]
+    identifier = "about"
+    name       = "Whoami"
+    title      = "whoami"
+    url        = "/whoami"
+ 
