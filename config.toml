@@ -1,5 +1,6 @@
 baseURL = "https://sahil.fyi/"
 title   = "Sahil Aggarwal"
+
 languageCode = "en-us"
 theme = "hello-friend-ng-fork"
 
@@ -52,6 +53,7 @@ disableHugoGeneratorInject = false
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04 -0700"
+  homeImage       = "fbavatar_1592775593115_6680585041305847423.png"
 
   # Metadata mostly used in document's head
   description = "Sahil's scratch pad"
@@ -125,6 +127,10 @@ disableHugoGeneratorInject = false
     identifier = "blog"
     name       = "Blog"
     url        = "/posts"
+  [[menu.main]]
+    identifier = "poems"
+    name       = "Poems"
+    url        = "/poems"
   [[menu.main]]
     identifier = "about"
     name       = "Whoami"
