@@ -103,7 +103,7 @@ disableHugoGeneratorInject = false
 
   [[params.social]]
     name = "email"
-    url  = "mailto:sahil.agg15@example.com"
+    url  = "mailto:sahil.agg15@gmail.com"
 
   [[params.social]]
     name = "github"
@@ -127,10 +127,6 @@ disableHugoGeneratorInject = false
     identifier = "blog"
     name       = "Blog"
     url        = "/posts"
-  [[menu.main]]
-    identifier = "poems"
-    name       = "Poems"
-    url        = "/poems"
   [[menu.main]]
     identifier = "about"
     name       = "Whoami"

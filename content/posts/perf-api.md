@@ -6,6 +6,7 @@ toc: false
 images:
 tags:
   - system
+  - tech
 ---
 
 Profiling can be very helpful while debugging or throttling application to bring down the latencies and optimize the application at system level. There are many profiling tools such as dtrace, systemtap, ktap, ftrace, perf etc from which only few are safe to use on production machines(ftrace, perf).
