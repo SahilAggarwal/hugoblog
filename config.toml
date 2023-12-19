@@ -2,7 +2,7 @@ baseURL = "https://sahil.fyi/"
 title   = "Sahil Aggarwal"
 
 languageCode = "en-us"
-theme = "hello-friend-ng-fork"
+theme = "hello-friend-ng"
 
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
@@ -112,7 +112,7 @@ disableHugoGeneratorInject = false
   [[params.social]]
     name = "linkedin"
     url  = "https://linkedin.com/in/sahilagg15"
-  
+
   [[params.social]]
     name = "facebook"
     url  = "https://facebook.com/sahil.aggarwal15"
@@ -132,4 +132,3 @@ disableHugoGeneratorInject = false
     name       = "Whoami"
     title      = "whoami"
     url        = "/whoami"
- 

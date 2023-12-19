@@ -1,7 +1,7 @@
 ---
 title: "Perf Api"
 date: 2015-08-15T13:54:53Z
-draft: true
+draft: false
 toc: false
 images:
 tags:
@@ -212,7 +212,7 @@ int mmap_pages_read(struct mmap_pages *mp,struct buf_reader *reader)
         if((mp->read & mp->mask) + size != (head & mp->mask) &&
                 ((mp->read + size) &  mp->mask) != 0 ) {
 
-                buf = &data[mp->read & mp->mask]; 
+                buf = &data[mp->read & mp->mask];
                 size = mp->mask + 1 - (mp->read & mp->mask);
                 nread = reader->read(buf,size,reader);
                 if(nread < 0) {

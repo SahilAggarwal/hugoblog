@@ -1,7 +1,7 @@
 ---
 title: "Adding Tracepoints in Ftrace"
 date: 2015-09-06T14:06:28Z
-draft: true
+draft: false
 toc: false
 images:
 tags:
@@ -21,14 +21,14 @@ be useful in profiling the performance degradation due to swapping
 **mm\_page\_swap\_out:** Called whenever page is swapped out to swap area
 
 It requires 2 steps:
- 
+
 * Declaring the tracepoint: Since these are memory related events and some of the memory related events are already available in `/sys/kernel/debug/tracing/events/kmem` let's add `mm_page_swap_in` in the same directory i.e kmem.
 
     Before declaring tracepoint, we need to look into the function where this tracepoint will be inserted to see what fields are visible in the function which can be passed to the tracepoint and captured. For eg: here we can pass struct page *, int to the tracepoint.
 
     `/include/trace/events/kmem.h` holds the declaration of events related to kmem. Let's add `mm_page_swap_in/mm_page_swap_out` to the same. The declaration format is:
 
-    ```  
+    ```
     TRACE_EVENT(mm_page_swap_out,           // Tracepoint name
 
      TP_PROTO(struct page *page, int ret),  // args this tracepoint will accept
@@ -56,21 +56,21 @@ It requires 2 steps:
     This will create the function `trace_mm_page_fault(struct page*, int)`, which can be inserted wherever we want to put our tracepoint.
 
 * Putting that tracepoint in appropriate place required: `add_to_swap(struct page *page, struct list_head *list)` is the function called when page is added to the swap area. So to put the declared tracepoint :
-    
+
     ```
     int add_to_swap(struct page *page, struct list_head *list) {
-           ..... 
+           .....
            trace_mm_page_swap_out(page,ret)
        }
-   
+
     ```
    Now, after recompiling the kernel and mounting debugfs, we can see our tracepoint in ftrace:
-   
+
     ```
    /sys/kernel/debug/tracing/events/kmem/mm_page_swap_out
    /sys/kernel/debug/tracing/events/kmem/mm_page_swap_out/id
    /sys/kernel/debug/tracing/events/kmem/mm_page_swap_out/format
    /sys/kernel/debug/tracing/events/kmem/mm_page_swap_out/filter
    /sys/kernel/debug/tracing/events/kmem/mm_page_swap_out/enable
-    ```   
+    ```
     Similarly, we can add tracepoint for `mm_page_swap_in` which can be added in function `static int do_swap_page(...)` in `mm/memory.c`.
